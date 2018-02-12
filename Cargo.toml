@@ -1,6 +1,6 @@
 [package]
 authors = ["Nolan Darilek <nolan@thewordnerd.info>"]
-name = "YewError"
+name = "yew_error"
 version = "0.1.0"
 [dependencies]
 yew = {git = "https://github.com/DenisKolodin/yew"}
