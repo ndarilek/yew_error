@@ -1,3 +1,4 @@
+#![recursion_limit="128"]
 #[macro_use]
 extern crate yew;
 
@@ -7,7 +8,6 @@ type Context = ();
 
 enum Scene {
     Home,
-    Settings,
 }
 
 enum Msg {
@@ -52,9 +52,6 @@ impl Renderable<Context, Model> for Model {
                                     <li class="nav-item",>
                                         <a class="nav-link", href="#", onclick=|_| Msg::SetScene(Scene::Home),>{"Home"}</a>
                                     </li>
-                                    <li class="nav-item",>
-                                        <a class="nav-link", href="#", onclick=|_| Msg::SetScene(Scene::Settings),>{"Settings"}</a>
-                                    </li>
                                 </ul>
                             </div>
                         </nav>
@@ -64,7 +61,6 @@ impl Renderable<Context, Model> for Model {
                     <div class="col",>{
                         match self.scene {
                             Scene::Home => self.home(),
-                            Scene::Settings => self.settings(),
                         }
                     }</div>
                 </main>
@@ -77,12 +73,6 @@ impl Model {
     fn home(&self) -> Html<Context, Self> {
         html! {
             <p>{"Welcome home."}</p>
-        }
-    }
-
-    fn settings(&self) -> Html<Context, Self> {
-        html! {
-            <p>{"Settings."}</p>
         }
     }
 }
